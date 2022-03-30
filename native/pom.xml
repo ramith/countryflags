@@ -15,7 +15,7 @@
     </properties>
     <repositories>
         <repository>
-            <id>github.releases</id>
+            <id>github</id>
             <name>GitHub ballerina-platform Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/ballerina-platform/ballerina-lang</url>
             <releases>
@@ -113,6 +113,11 @@
             <groupId>org.ballerinalang</groupId>
             <artifactId>ballerina-runtime</artifactId>
             <version>2201.0.3-20220330-110800-e0ea1af3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.9</version>
         </dependency>
     </dependencies>
     <build>
