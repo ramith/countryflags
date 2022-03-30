@@ -5,6 +5,7 @@
   distribution = "2201.0.2"
   export = ["dddss"]
   name = "dddss"
+  version="1.0.0"
   org = "ramithjayasingheznszn"
 
 [[platform.java11.dependency]]

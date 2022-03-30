@@ -26,7 +26,7 @@ function initDatabase() returns error|jdbc:Client {
             return droptable;
         }
 
-        sql:ExecutionResult|sql:Error loadData = dbClient->execute(`CREATE TABLE countries(id INT PRIMARY KEY, alpha2 VARCHAR(255), alpha3 VARCHAR(255), name VARCHAR(255)) AS SELECT * FROM CSVREAD('classpath:/resources/ramith/countrycodes/1/countries.csv')`);
+        sql:ExecutionResult|sql:Error loadData = dbClient->execute(`CREATE TABLE countries(id INT PRIMARY KEY, alpha2 VARCHAR(255), alpha3 VARCHAR(255), name VARCHAR(255)) AS SELECT * FROM CSVREAD('classpath:/resources/ramithjayasingheznszn/dddss/1/countries.csv')`);
         if loadData is error {
             log:printError("unable to drop the table", errorMsg = loadData.message());
             return loadData;
