@@ -4,7 +4,6 @@ import ballerinax/java.jdbc;
 import ballerina/sql;
 import ballerina/http;
 import ballerina/mime;
-import ballerina/jballerina.java;
 
 type Country record {
     int id;
@@ -14,6 +13,8 @@ type Country record {
 };
 
 jdbc:Client countryDBClient = check initDatabase();
+
+http:Client flagEndpoint = check new ("https://flagcdn.com");
 
 function initDatabase() returns error|jdbc:Client {
     jdbc:Client|sql:Error dbClient = new ("jdbc:h2:./data/countriesdb");
@@ -72,7 +73,13 @@ service / on new http:Listener(9090) {
 
 }
 
-isolated function getFlag(string countryCode) returns byte[]|error = @java:Method {
-    name: "getFlag",
-    'class: "lk.opensource.ramithj.flags.FlagReader"
-} external;
+function getFlag(string countryCode) returns byte[] | error {
+    http:Response res = check flagEndpoint->get("/80x60/" + countryCode + ".png" );
+    return check res.getBinaryPayload();
+}
+
+
+// isolated function getFlag(string countryCode) returns byte[]|error = @java:Method {
+//     name: "getFlag",
+//     'class: "lk.opensource.ramithj.flags.FlagReader"
+// } external;
